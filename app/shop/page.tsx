@@ -3,11 +3,13 @@ import React from "react";
 import { BackgroundGradient } from "../components/ui/background-gradient";
 import { IconAppWindow } from "@tabler/icons-react";
 import Image from "next/image";
+import NavBar from "../components/NavBar";
 
 export default function Shop() {
     return (
       <>
-        <div className="rounded-[22px] max-w-sm">
+        <NavBar />
+        <div className="rounded-[22px] max-w-sm pt-20">
           <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
             <Image
               src='/og-package-react'
