@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/app/utils/cn";
+import ShoppingCart from "./ShoppingCart";
 
 export default function NavbarDemo() {
   return (
@@ -23,6 +24,7 @@ function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <a className="text-white" href="/">Home</a>
         <a className="text-white" href="/shop">Shop</a>
+        <a className="text-white" href="/cart">{<ShoppingCart />}</a>
       </Menu>
     </div>
   );
