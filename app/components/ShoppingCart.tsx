@@ -15,7 +15,7 @@ export default function ShoppingCart() {
                 <Badge color="secondary" badgeContent={itemCount}>
                     <ShoppingCartIcon />{" "}
                 </Badge>
-                <ButtonGroup>
+                {/* <ButtonGroup>
                     <Button
                         onClick={() => {
                             setItemCount(Math.max(itemCount - 1, 0));
@@ -32,7 +32,7 @@ export default function ShoppingCart() {
                         {" "}
                         <AddIcon fontSize="small" />
                     </Button>
-                </ButtonGroup>
+                </ButtonGroup> */}
             </div>
         </div>
     );
