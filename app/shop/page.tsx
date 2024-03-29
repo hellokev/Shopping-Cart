@@ -4,12 +4,39 @@ import { BackgroundGradient } from "../components/ui/background-gradient";
 import { IconAppWindow } from "@tabler/icons-react";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
+import FetchData from "../FetchData";
+import { useState } from 'react';
 
 export default function Shop() {
+
+    interface Product {
+      id: number;
+      title: string;
+      description: string;
+      price: number;
+    }
+    const [productData, setProductData] = useState<Product[] | null>(null);
+    
     return (
       <>
+        <FetchData onDataReceived={setProductData}>
+          {null}
+        </FetchData>
         <NavBar />
         <div className="rounded-[22px] max-w-sm pt-20">
+          {
+            productData && (
+              <ul>
+                {productData.map((product: Product) => (
+                  <li key={product.id}>
+                    <h2>{product.title}</h2>
+                    <p>{product.description}</p>
+                    <p>Price: {product.price}</p>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
           <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
             <Image
               src='/og-package-react'

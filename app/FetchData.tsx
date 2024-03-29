@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const FetchData = () => {
+const FetchData = ({ children, onDataReceived }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -13,9 +13,17 @@ const FetchData = () => {
                 }
                 return res.json();
             })
+            .then((fetchedData) => {
+                setData(fetchedData);
+                if(onDataReceived) {
+                    onDataReceived(fetchedData);
+                }
+            })
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
-    }, []);
+    }, [onDataReceived]);
+
+    return children;
 };
 
 export default FetchData;
