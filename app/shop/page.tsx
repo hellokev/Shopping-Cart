@@ -14,6 +14,7 @@ export default function Shop() {
       title: string;
       description: string;
       price: number;
+      image: string;
     }
     const [productData, setProductData] = useState<Product[] | null>(null);
     let count = 0;
@@ -31,6 +32,12 @@ export default function Shop() {
                   {productData.map((product: Product) => (
                     <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900" key={count}>
                       <li key={product.id}>
+                        <Image
+                          src={product.image} 
+                          alt={product.title}
+                          width="400"
+                          height="400"
+                        />
                         <h2>{product.title}</h2>
                         <p>{product.description}</p>
                         <p>Price: {product.price}</p>
