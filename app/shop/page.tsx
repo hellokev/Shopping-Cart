@@ -37,12 +37,23 @@ export default function Shop() {
                           alt={product.title}
                           width="400"
                           height="400"
+                          className="object-contain"
                         />
-                        <h2>{product.title}</h2>
-                        <p>{product.description}</p>
-                        <p>Price: {product.price}</p>
+                        <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">{product.title}</p>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400">{product.description}</p>
+                        <div className="flex items-center space-x-2">
+                          <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+                            <span>Buy now </span>
+                            <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
+                            ${product.price}
+                            </span>
+                          </button>
+                          <button className="rounded-full pl-4 pr-4 py-1 text-white flex items-center justify-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+                            <span>Add to Cart</span>
+                          </button>
+                        </div>
                       </li>
-                      count++
+                      
                     </BackgroundGradient>
                   ))}
               </ul>
