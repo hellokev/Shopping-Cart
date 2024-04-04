@@ -5,7 +5,8 @@ import { IconAppWindow } from "@tabler/icons-react";
 import Image from "next/image";
 import NavBar from "../components/NavBar";
 import FetchData from "../FetchData";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import ShoppingCart from "../components/ShoppingCart";
 
 export default function Shop() {
 
@@ -18,6 +19,9 @@ export default function Shop() {
     }
     const [productData, setProductData] = useState<Product[] | null>(null);
     let count = 0;
+    // const handleAddItem = () => {
+    //   setItemCount(itemCount + 1);
+    // }
     
     return (
       <>
@@ -48,7 +52,10 @@ export default function Shop() {
                             ${product.price}
                             </span>
                           </button>
-                          <button className="rounded-full pl-4 pr-4 py-1 text-white flex items-center justify-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+                          <button 
+                            className="rounded-full pl-4 pr-4 py-1 text-white flex items-center 
+                                      justify-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800"
+                            >
                             <span>Add to Cart</span>
                           </button>
                         </div>
