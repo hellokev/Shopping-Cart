@@ -9,7 +9,7 @@ import { useState, useContext } from 'react';
 import ShoppingCart from "../components/ShoppingCart";
 
 export default function Shop() {
-
+  type SetItemCountFunction = (newCount: number) => void;
     interface Product {
       id: number;
       title: string;
@@ -18,10 +18,14 @@ export default function Shop() {
       image: string;
     }
     const [productData, setProductData] = useState<Product[] | null>(null);
+    const [itemCount, setItemCount] = useState(0);
     let count = 0;
     // const handleAddItem = () => {
     //   setItemCount(itemCount + 1);
     // }
+    const handleAddToCart = () => {
+      setItemCount(itemCount + 1);
+    };
     
     return (
       <>
@@ -52,11 +56,15 @@ export default function Shop() {
                             ${product.price}
                             </span>
                           </button>
-                          <button 
+                          <button
+                            onClick={() => {
+                                handleAddToCart();
+                                setItemCount(itemCount + 1);
+                            }} 
                             className="rounded-full pl-4 pr-4 py-1 text-white flex items-center 
                                       justify-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800"
                             >
-                            <span>Add to Cart</span>
+                            Add to Cart
                           </button>
                         </div>
                       </li>
@@ -91,6 +99,7 @@ export default function Shop() {
             </button>
           </BackgroundGradient>
         </div>
+        <ShoppingCart onAddToCart={(handleAddToCart as SetItemCountFunction)} />
       </>
       );
 }
