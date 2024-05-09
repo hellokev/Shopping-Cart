@@ -2,23 +2,28 @@ import React from "react";
 import Badge from "@material-ui/core/Badge";
 import { useState } from 'react';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import Shop from "../shop/page";
 
-export default function ShoppingCart({ onAddToCart }: { onAddToCart: (newCount: number) => void }) {
+export default function ShoppingCart() {
+    interface ShopProps {
+        onCount: number;
+        onItemPress: (count: number) => void;
+    }
+    
     const [itemCount, setItemCount] = useState(0);
 
-    const handleAddToCart = () => {
+    const handleItemPress = () => {
         setItemCount(itemCount + 1);
-        onAddToCart(itemCount + 1); // Notify the parent component about the updated count
-    };
- 
+      };
+
     return (
         <div>
             <div>
-                <Badge color="secondary" badgeContent={itemCount}>
-                    <ShoppingCartIcon />{" "}
+                <Badge color="secondary" badgeContent={itemCount} overlap="rectangular">
+                    <ShoppingCartIcon />
                 </Badge>
-                <button onClick={handleAddToCart}></button>
             </div>
+            <Shop onCount={itemCount} onItemPress={handleItemPress}/>
         </div>
     );
 }

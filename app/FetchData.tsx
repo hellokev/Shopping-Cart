@@ -1,6 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 
-const FetchData = ({ children, onDataReceived }) => {
+interface FetchDataProps {
+    children: ReactNode;
+    onDataReceived?: (data: any) => void;
+}
+
+const FetchData = ({ children, onDataReceived }: FetchDataProps) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);

@@ -8,7 +8,7 @@ import FetchData from "../FetchData";
 import { useState, useContext } from 'react';
 import ShoppingCart from "../components/ShoppingCart";
 
-export default function Shop() {
+export default function Shop({ onCount, onItemPress }: { onCount: number; onItemPress: (newCount: number) => void }) {
   type SetItemCountFunction = (newCount: number) => void;
     interface Product {
       id: number;
@@ -18,21 +18,13 @@ export default function Shop() {
       image: string;
     }
     const [productData, setProductData] = useState<Product[] | null>(null);
-    const [itemCount, setItemCount] = useState(0);
     let count = 0;
-    // const handleAddItem = () => {
-    //   setItemCount(itemCount + 1);
-    // }
-    const handleAddToCart = () => {
-      setItemCount(itemCount + 1);
-    };
     
     return (
       <>
         <FetchData onDataReceived={setProductData}>
           {null}
         </FetchData>
-        <NavBar />
         <div className="rounded-[22px] max-w-sm pt-20">
           {
             productData && (
@@ -58,12 +50,12 @@ export default function Shop() {
                           </button>
                           <button
                             onClick={() => {
-                                handleAddToCart();
-                                setItemCount(itemCount + 1);
+                                onItemPress(onCount);
+                               
                             }} 
                             className="rounded-full pl-4 pr-4 py-1 text-white flex items-center 
                                       justify-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800"
-                            >
+                          >
                             Add to Cart
                           </button>
                         </div>
@@ -99,7 +91,6 @@ export default function Shop() {
             </button>
           </BackgroundGradient>
         </div>
-        <ShoppingCart onAddToCart={(handleAddToCart as SetItemCountFunction)} />
       </>
       );
 }

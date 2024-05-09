@@ -24,7 +24,7 @@ function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <a className="text-white" href="/">Home</a>
         <a className="text-white" href="/shop">Shop</a>
-        <a className="text-white" href="/cart">{<ShoppingCart />}</a>
+        <a className="text-white" >{<ShoppingCart />}</a>
       </Menu>
     </div>
   );
